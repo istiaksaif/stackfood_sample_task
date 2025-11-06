@@ -12,6 +12,8 @@ class AppColor {
   static const Color buttonColor = Color(0xFFEA806B);
   static const Color greenColor = Color(0xFF039D55);
   static const Color inactiveDotColor = Color(0xFFF8CCAD);
+  static const Color shimmerBase = Color(0x66C1C4CC);
+  static const Color shimmerHigh = Color(0x33C1C4CC);
 
   static Color parseHexColor(String hexCode) {
     hexCode = hexCode.replaceAll('#', '');

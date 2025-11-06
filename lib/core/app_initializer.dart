@@ -1,9 +1,9 @@
+import 'dart:io';
+
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:haptic_feedback/haptic_feedback.dart';
-
 import 'utils/session_manager.dart';
-import 'utils/platform_utils.dart';
 
 class AppInitializer {
   static bool _initialized = false;
@@ -28,7 +28,7 @@ class AppInitializer {
 
     try {
       canVibrate = await Haptics.canVibrate();
-      if (PlatformUtils.isAndroid) {
+      if (Platform.isAndroid) {
         final androidInfo = await DeviceInfoPlugin().androidInfo;
         if (androidInfo.version.sdkInt >= 33) {
           canVibrate = false;

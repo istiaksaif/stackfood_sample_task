@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/app_image.dart';
-import '../../../core/utils/app_responsive.dart';
 import '../controllers/navigation_controller.dart';
 import 'custom_nav_item.dart';
 
@@ -30,44 +29,11 @@ class _HomeBottomNavState extends State<HomeBottomNav>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final navHeight = AppResponsive.value<double>(
-      context: context,
-      mobile: 70,
-      tablet: 70,
-      desktop: 70,
-    );
-    final horizontalPadding = AppResponsive.value<double>(
-      context: context,
-      mobile: 6,
-      tablet: 16,
-      desktop: 20,
-    );
-    final verticalPadding = AppResponsive.value<double>(
-      context: context,
-      mobile: 6,
-      tablet: 8,
-      desktop: 10,
-    );
-    final iconSize = AppResponsive.value<double>(
-      context: context,
-      mobile: 22,
-      tablet: 24,
-      desktop: 26,
-    );
-    final gap = AppResponsive.value<double>(
-      context: context,
-      mobile: 32,
-      tablet: 40,
-      desktop: 48,
-    );
 
     return Container(
-      height: navHeight,
+      height: 70.h,
       width: 1.sw,
-      padding: EdgeInsets.symmetric(
-        horizontal: horizontalPadding,
-        vertical: verticalPadding,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
       decoration: BoxDecoration(
         color: AppColor.whiteColor,
         border: Border(top: BorderSide(color: AppColor.borderColor, width: 1)),
@@ -86,7 +52,7 @@ class _HomeBottomNavState extends State<HomeBottomNav>
               iconPath: navigationController.activeIndex.value == 0
                   ? AppImage.icHomeBold
                   : AppImage.icHome,
-              iconSize: iconSize,
+              iconSize: 24.h,
             ),
             CustomNavItem(
               onTap: () {
@@ -95,9 +61,9 @@ class _HomeBottomNavState extends State<HomeBottomNav>
               iconPath: navigationController.activeIndex.value == 1
                   ? AppImage.icFavBold
                   : AppImage.icFav,
-              iconSize: iconSize,
+              iconSize: 24.h,
             ),
-            SizedBox(width: gap),
+            SizedBox(width: 32.w),
             CustomNavItem(
               onTap: () {
                 navigationController.setActiveIndex(2);
@@ -105,7 +71,7 @@ class _HomeBottomNavState extends State<HomeBottomNav>
               iconPath: navigationController.activeIndex.value == 2
                   ? AppImage.icOrdersBold
                   : AppImage.icOrders,
-              iconSize: iconSize,
+              iconSize: 24.h,
             ),
             CustomNavItem(
               onTap: () {
@@ -114,7 +80,7 @@ class _HomeBottomNavState extends State<HomeBottomNav>
               iconPath: navigationController.activeIndex.value == 3
                   ? AppImage.icMenuBold
                   : AppImage.icMenu,
-              iconSize: iconSize,
+              iconSize: 24.h,
             ),
           ],
         );

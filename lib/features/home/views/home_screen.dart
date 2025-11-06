@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen>
         child: ListView.builder(
           controller: homeController.scrollController,
           physics: const AlwaysScrollableScrollPhysics(),
-          padding: EdgeInsets.only(bottom: 70.h),
+          padding: EdgeInsets.only(bottom: 40.h),
           itemCount: 10,
           itemBuilder: (_, index) {
             switch (index) {
@@ -202,8 +202,8 @@ class _HomeScreenState extends State<HomeScreen>
             enabled: isLoading && !hasData,
             enableSwitchAnimation: true,
             effect: PulseEffect(
-              from: const Color(0xFFC1C4CC).withValues(alpha: .4),
-              to: const Color(0xFFC1C4CC).withValues(alpha: .2),
+              from: AppColor.shimmerBase,
+              to: AppColor.shimmerHigh,
               duration: const Duration(seconds: 1),
             ),
             child: Obx(() {
@@ -274,8 +274,8 @@ class _HomeScreenState extends State<HomeScreen>
         enabled: loading,
         enableSwitchAnimation: true,
         effect: PulseEffect(
-          from: const Color(0xFFC1C4CC).withValues(alpha: .4),
-          to: const Color(0xFFC1C4CC).withValues(alpha: .2),
+          from: AppColor.shimmerBase,
+          to: AppColor.shimmerHigh,
           duration: const Duration(seconds: 1),
         ),
         child: homeController.categories.isEmpty
@@ -351,8 +351,8 @@ class _HomeScreenState extends State<HomeScreen>
       return Skeletonizer(
         enabled: loading,
         effect: PulseEffect(
-          from: const Color(0xFFC1C4CC).withValues(alpha: .4),
-          to: const Color(0xFFC1C4CC).withValues(alpha: .2),
+          from: AppColor.shimmerBase,
+          to: AppColor.shimmerHigh,
           duration: const Duration(seconds: 1),
         ),
         child: homeController.popularFoods.isEmpty
@@ -486,8 +486,8 @@ class _HomeScreenState extends State<HomeScreen>
       return Skeletonizer(
         enabled: loading,
         effect: PulseEffect(
-          from: const Color(0xFFC1C4CC).withValues(alpha: .4),
-          to: const Color(0xFFC1C4CC).withValues(alpha: .2),
+          from: AppColor.shimmerBase,
+          to: AppColor.shimmerHigh,
           duration: const Duration(seconds: 1),
         ),
         child: homeController.campaigns.isEmpty
@@ -651,8 +651,8 @@ class _HomeScreenState extends State<HomeScreen>
       return Skeletonizer(
         enabled: loading,
         effect: PulseEffect(
-          from: const Color(0xFFC1C4CC).withValues(alpha: .4),
-          to: const Color(0xFFC1C4CC).withValues(alpha: .2),
+          from: AppColor.shimmerBase,
+          to: AppColor.shimmerHigh,
           duration: const Duration(seconds: 1),
         ),
         child: homeController.restaurants.isEmpty

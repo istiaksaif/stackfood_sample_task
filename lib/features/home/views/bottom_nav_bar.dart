@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../../core/utils/app_color.dart';
 import '../../../core/utils/app_image.dart';
-import '../../../core/utils/app_responsive.dart';
 import '../../shared/view/dummy_screen.dart';
 import '../controllers/navigation_controller.dart';
 import '../widget/home_bottom_nav.dart';
@@ -30,19 +30,6 @@ class _BottomNavBarState extends State<BottomNavBar>
 
   @override
   Widget build(BuildContext context) {
-    final fabSize = AppResponsive.value<double>(
-      context: context,
-      mobile: 56,
-      tablet: 62,
-      desktop: 68,
-    );
-    final fabIconSize = AppResponsive.value<double>(
-      context: context,
-      mobile: 24,
-      tablet: 26,
-      desktop: 28,
-    );
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: false,
@@ -68,13 +55,13 @@ class _BottomNavBarState extends State<BottomNavBar>
           elevation: 10,
           child: InkWell(
             child: SizedBox(
-              width: fabSize,
-              height: fabSize,
+              width: 56.r,
+              height: 56.r,
               child: Center(
                 child: SvgPicture.asset(
                   AppImage.icCart,
-                  width: fabIconSize,
-                  height: fabIconSize,
+                  width: 24.r,
+                  height: 24.r,
                 ),
               ),
             ),
