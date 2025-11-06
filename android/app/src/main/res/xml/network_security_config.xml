@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Allow HTTP traffic to your backend domain -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">stackfood-admin.6amtech.com</domain>
+    </domain-config>
+
+    <!-- Fallback: allow all cleartext if needed (optional for testing only) -->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
