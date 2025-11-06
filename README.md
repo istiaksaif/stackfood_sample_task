@@ -1,16 +1,29 @@
-# stackfood_sample_task
+# 📱 StackFood Sample Task – Flutter App
 
-A new Flutter project.
+This project is a sample Flutter application built as part of an assessment.  
+It demonstrates clean UI architecture, widget modularization, API integration,  
+and GetX state management.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✅ Features
 
-A few resources to get you started if this is your first Flutter project:
+- Dynamic home screen with reusable modular widgets  
+- Banner carousel with slider and shimmer loading  
+- Categories with skeleton loading  
+- Popular foods section with rating, pricing, and shadow cards  
+- Food campaigns with strike-through pricing and add button  
+- Restaurant list with infinite scroll & loader  
+- Config-based currency formatting  
+- Reverse geocoding for location (mobile), fallback for web  
+- Clean separation of concerns using GetX
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```sh
+git clone https://github.com/istiaksaif/stackfood_sample_task.git
+cd stackfood_sample_task
