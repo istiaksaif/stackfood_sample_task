@@ -1,39 +1,40 @@
-# 📱 StackFood Sample Task – Flutter Application
+# StackFood Sample Task
 
-This project is developed as part of the **6amTech Recruitment Assessment**.  
-It is a pixel-perfect Flutter application that fetches real-time data from a public API and displays banners, categories, popular food, campaigns, and paginated restaurant lists.
+A Flutter application built as part of a technical assessment.  
+The app fetches data from the 6amTech StackFood public API and displays banners, categories, popular items, campaigns, and restaurants with pagination and state management.
 
-The application is fully responsive and supports both **Android** and **Web**.
+---
 
-## ✅ Features
+## 🚀 Features
 
-- Fetch real-time data from StackFood APIs
-- Fully responsive UI (Mobile + Web)
-- Pixel-perfect design implementation
-- GetX state management for controllers, dependency injection, routing
-- API retry mechanism
-- Shimmer loading using Skeletonizer
-- Pagination for restaurants
-- Centralized currency formatting using extensions
-- Modular widget structure
-- Error handling with fallback values
-- Address fetching using geocoding (mobile) and fallback for web
+- Pixel‑perfect UI based on provided design (mobile + web adaptive)
+- API integration using GetX & Repository pattern
+- State management using GetX
+- Pagination for Restaurants
+- Skeleton loading shimmer
+- Error handling for all API calls
+- Responsive layout using ScreenUtil
+- Centralized configuration loading (currency, default address, etc.)
+- Modular widget structure for clean code
 
-## ✅ API Endpoints Used
+---
 
-Base URL:
-https://stackfood-admin.6amtech.com
+## 📦 API Endpoints Used
 
-### Endpoints:
-- **Config** → `/api/v1/config`
-- **Banners** → `/api/v1/banners`
-- **Categories** → `/api/v1/categories`
-- **Popular Foods** → `/api/v1/products/popular`
-- **Food Campaigns** → `/api/v1/campaigns/item`
-- **Restaurants** → `/api/v1/restaurants/get-restaurants/all?offset=1&limit=10`
+| Feature | Endpoint |
+|--------|----------|
+| Config | `/api/v1/config` |
+| Banner | `/api/v1/banners` |
+| Categories | `/api/v1/categories` |
+| Popular Food | `/api/v1/products/popular` |
+| Campaign Items | `/api/v1/campaigns/item` |
+| Restaurants (Paginated) | `/api/v1/restaurants/get-restaurants/all?offset=1&limit=10` |
 
-### Required Headers:
-```
+Base URL:  
+`https://stackfood-admin.6amtech.com`
+
+Required Headers:
+```json
 {
   "Content-Type": "application/json; charset=UTF-8",
   "zoneId": "[1]",
@@ -42,57 +43,99 @@ https://stackfood-admin.6amtech.com
 }
 ```
 
-## ✅ Installation & Setup
+---
 
-### 1. Clone the Repository
+## 📂 Project Structure
+
 ```
-git clone https://github.com/istiaksaif/stackfood_sample_task
+lib/
+ ├── core/
+ ├── features/
+ │    ├── home/
+ │    ├── shared/
+ │    └── widgets/
+ ├── main.dart
+```
+
+---
+
+## 🛠 Installation & Run
+
+```sh
+git clone https://github.com/istiaksaif/stackfood_sample_task.git
 cd stackfood_sample_task
-```
-
-### 2. Install Dependencies
-```
 flutter pub get
-```
-
-### 3. Run the App
-```
 flutter run
 ```
 
-### 4. Run on Web
-```
-flutter run -d chrome
-```
+### ✅ For Release Build (Android)
 
-### 5. Build Release APK
-```
+```sh
 flutter build apk --release
 ```
 
-## ✅ Screenshots
+---
 
-Place your screenshots inside:
-```
-assets/screenshots/
-```
+## 🎥 Demo Video (MP4)
 
-## ✅ Demo Video
+The demo video is included inside the repository:
 
-Place your MP4 demo video here:
-```
-assets/video/demo.mp4
-```
+📁 **assets/video/demo.mp4**
 
-## ✅ Additional Notes
+GitHub cannot autoplay MP4 inside README.  
+But you can click the link below to open the video:
 
-- Full shimmer skeleton loading states
-- Modular UI widgets
-- Pagination logic with lazy loading
-- Currency formatting extension
-- Web-safe fallback for location lookups
+👉 **[Watch Demo Video](assets/video/demo.mp4)**
 
-## ✅ Author
+---
+
+## 📸 Screenshots
+
+Below are the UI previews from the completed project.
+
+<p float="left">
+  <img src="https://github.com/istiaksaif/stackfood_sample_task/blob/main/assets/screenshots/ss1.png" width="260"/>
+  <img src="https://github.com/istiaksaif/stackfood_sample_task/blob/main/assets/screenshots/ss2.png" width="260"/>
+  <img src="https://github.com/istiaksaif/stackfood_sample_task/blob/main/assets/screenshots/ss3.png" width="260"/>
+</p>
+
+<p float="left">
+  <img src="https://github.com/istiaksaif/stackfood_sample_task/blob/main/assets/screenshots/ss4.png" width="260"/>
+  <img src="https://github.com/istiaksaif/stackfood_sample_task/blob/main/assets/screenshots/ss5.png" width="260"/>
+  <img src="https://github.com/istiaksaif/stackfood_sample_task/blob/main/assets/screenshots/ss6.png" width="260"/>
+</p>
+
+---
+
+## ✅ Tech Stack
+
+- Flutter 3.x
+- GetX (State Management)
+- Dart Isolates (compute)
+- Carousel Slider
+- Smooth Page Indicator
+- Skeletonizer Shimmer
+- ScreenUtil for Responsive UI
+
+---
+
+## 📌 Notes
+
+- All API calls are properly handled with retry manager
+- Uses extension methods for currency formatting
+- Fully modularized widget structure
+- Location name resolved from config default location (mobile-supported)
+
+---
+
+## 🧑‍💻 Author
 
 **Istiak Ahamed Saif**  
+Software Engineer  
 GitHub: https://github.com/istiaksaif
+
+---
+
+## ✅ License
+
+This project is created only for the assessment purpose and not intended for commercial use.
