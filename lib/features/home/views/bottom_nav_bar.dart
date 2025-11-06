@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/instance_manager.dart';
 
+import '../../../core/utils/app_color.dart';
+import '../../../core/utils/app_image.dart';
 import '../controllers/navigation_controller.dart';
 import '../widget/home_bottom_nav.dart';
 import 'home_screen.dart';
@@ -45,18 +49,16 @@ class _BottomNavBarState extends State<BottomNavBar>
         ],
       ),
       bottomNavigationBar: HomeBottomNav(),
-      floatingActionButton: const ClipOval(
+      floatingActionButton: ClipOval(
         child: Material(
-          color: Color(0xFF7861FF),
+          color: AppColor.greenColor,
           elevation: 10,
           child: InkWell(
             child: SizedBox(
-              width: 56,
-              height: 56,
-              child: Icon(
-                CupertinoIcons.add_circled,
-                size: 28,
-                color: Colors.white,
+              width: 56.w,
+              height: 56.h,
+              child: Center(
+                child: SvgPicture.asset(AppImage.icCart, width: 24.w),
               ),
             ),
           ),

@@ -1,9 +1,11 @@
 import 'dart:async';
-import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 
-// typedef RetryCallback = void Function();
+import 'network_error_helper_stub.dart'
+    if (dart.library.io) 'network_error_helper_io.dart' as io_helper;
+
 typedef RetryCallback = Future<void> Function();
 
 class NetworkErrorHandler {
@@ -20,7 +22,7 @@ class NetworkErrorHandler {
     Object e, [
     StackTrace? stackTrace,
     RetryCallback? onRetry,
-  ]) async{
+  ]) async {
     if (kDebugMode) {
       debugPrint('====> Network Exception: $e');
       if (stackTrace != null) debugPrint('====> Stack: $stackTrace');
@@ -31,18 +33,18 @@ class NetworkErrorHandler {
       return Response(timeoutMessage, 408);
     }
 
-    if (e is SocketException) {
-      final message = e.osError?.message ?? e.message;
+    if (io_helper.isSocketException(e)) {
+      final message = io_helper.socketExceptionMessage(e) ?? '';
 
       if (message.contains('Connection refused')) {
-        onRetry?.call();
+        await onRetry?.call();
         return Response(
           'Server not reachable. Please check your backend connection.',
           111,
         );
       } else if (message.contains('Network is unreachable') ||
           message.contains('Failed host lookup')) {
-        onRetry?.call();
+        await onRetry?.call();
         return Response(noInternetMessage, 0);
       }
 
@@ -53,7 +55,7 @@ class NetworkErrorHandler {
       return Response(formatMessage, -2);
     }
 
-    if (e is HttpException) {
+    if (io_helper.isHttpException(e)) {
       return Response(httpMessage, -3);
     }
 
