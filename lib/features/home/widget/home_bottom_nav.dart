@@ -48,44 +48,41 @@ class _HomeBottomNavState extends State<HomeBottomNav>
       child: Obx(() {
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CustomNavItem(
               onTap: () {
                 navigationController.clickStartTrack.value = 0;
                 navigationController.setActiveIndex(0);
               },
-              iconPath: AppImage.icHome,
-              selected: navigationController.activeIndex.value == 0
-                  ? true
-                  : false,
+              iconPath: navigationController.activeIndex.value == 0
+                  ? AppImage.icHomeBold
+                  : AppImage.icHome,
             ),
             CustomNavItem(
               onTap: () {
                 navigationController.setActiveIndex(1);
               },
-              iconPath: AppImage.icFav,
-              selected: navigationController.activeIndex.value == 1
-                  ? true
-                  : false,
+              iconPath: navigationController.activeIndex.value == 1
+                  ? AppImage.icFavBold
+                  : AppImage.icFav,
             ),
+            SizedBox(width: 20.w),
             CustomNavItem(
               onTap: () {
                 navigationController.setActiveIndex(2);
               },
-              iconPath: AppImage.icOrders,
-              selected: navigationController.activeIndex.value == 2
-                  ? true
-                  : false,
+              iconPath: navigationController.activeIndex.value == 2
+                  ? AppImage.icOrdersBold
+                  : AppImage.icOrders,
             ),
             CustomNavItem(
               onTap: () {
                 navigationController.setActiveIndex(3);
               },
-              iconPath: AppImage.icMenu,
-              selected: navigationController.activeIndex.value == 3
-                  ? true
-                  : false,
+              iconPath: navigationController.activeIndex.value == 3
+                  ? AppImage.icMenuBold
+                  : AppImage.icMenu,
             ),
           ],
         );

@@ -3,7 +3,7 @@ class AppImage {
   static const String icHome = '${assetPath}ic_home.svg';
   static const String icFav = '${assetPath}ic_fav.svg';
   static const String icCart = '${assetPath}ic_cart.svg';
-  static const String icOrders = '${assetPath}ic_order.svg';
+  static const String icOrders = '${assetPath}ic_orders.svg';
   static const String icMenu = '${assetPath}ic_menu.svg';
   static const String icHomeBold = '${assetPath}ic_home_bold.svg';
   static const String icFavBold = '${assetPath}ic_fav_bold.svg';
