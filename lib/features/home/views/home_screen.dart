@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/instance_manager.dart';
 import '../../../core/utils/app_color.dart';
+import '../../../core/utils/app_responsive.dart';
 import '../../../core/widgets/custom_app_bar.dart';
 import '../controllers/home_controller.dart';
 import '../controllers/navigation_controller.dart';
@@ -35,6 +36,19 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final expandedHeight = AppResponsive.value<double>(
+      context: context,
+      mobile: 390,
+      tablet: 340,
+      desktop: 320,
+    );
+    final toolbarHeight = AppResponsive.value<double>(
+      context: context,
+      mobile: 174,
+      tablet: 150,
+      desktop: 140,
+    );
+
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
       appBar: CustomAppBar(
@@ -44,8 +58,8 @@ class _HomeScreenState extends State<HomeScreen>
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              expandedHeight: 390.h,
-              toolbarHeight: 174.h,
+              expandedHeight: expandedHeight.h,
+              toolbarHeight: toolbarHeight.h,
               pinned: true,
               elevation: 0,
               automaticallyImplyLeading: false,

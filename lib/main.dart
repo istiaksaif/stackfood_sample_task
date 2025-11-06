@@ -10,6 +10,7 @@ import 'core/bindings/initial_binding.dart';
 import 'core/localization/app_translations.dart';
 import 'core/routes/app_pages.dart';
 import 'core/routes/app_routes.dart';
+import 'core/utils/app_responsive.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -55,28 +56,52 @@ class _MyAppState extends State<MyApp> {
     return ScreenUtilInit(
       designSize: const Size(390, 870),
       minTextAdapt: true,
+      splitScreenMode: true,
+      useInheritedMediaQuery: true,
       builder: (context, child) {
-        return MediaQuery(
-          data: MediaQuery.of(
-            context,
-          ).copyWith(textScaler: const TextScaler.linear(1.0)),
-          child: GetMaterialApp(
-            navigatorKey: navigatorKey,
-            builder: FToastBuilder(),
-            debugShowCheckedModeBanner: false,
-            translations: AppTranslations(),
-            locale: AppTranslations.resolveSavedLocale(),
-            fallbackLocale: AppTranslations.en,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
-            initialRoute: Routes.home,
-            initialBinding: InitialBinding(),
-            getPages: AppPages.pages,
-          ),
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            final mediaQuery = MediaQuery.of(context);
+            final targetWidth =
+                AppResponsive.resolveContentWidth(constraints.maxWidth);
+
+            final constrainedApp = MediaQuery(
+              data: mediaQuery.copyWith(
+                size: Size(targetWidth, mediaQuery.size.height),
+                textScaler: const TextScaler.linear(1.0),
+              ),
+              child: child!,
+            );
+
+            if (constraints.maxWidth <= targetWidth) {
+              return constrainedApp;
+            }
+
+            return Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                width: targetWidth,
+                child: constrainedApp,
+              ),
+            );
+          },
         );
       },
+      child: GetMaterialApp(
+        navigatorKey: navigatorKey,
+        builder: FToastBuilder(),
+        debugShowCheckedModeBanner: false,
+        translations: AppTranslations(),
+        locale: AppTranslations.resolveSavedLocale(),
+        fallbackLocale: AppTranslations.en,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        initialRoute: Routes.home,
+        initialBinding: InitialBinding(),
+        getPages: AppPages.pages,
+      ),
     );
   }
 }
