@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/cupertino.dart' hide Banner;
 import 'package:flutter/foundation.dart';
 import 'package:geocoding/geocoding.dart';
@@ -18,6 +19,9 @@ class HomeController extends GetxController {
   final ApiClient apiClient;
 
   HomeController({required this.apiClient});
+
+  CarouselSliderController carouselController = CarouselSliderController();
+  var bannerCurrentPage = 0.obs;
 
   var config = Rxn<ConfigModel>();
   var banners = <Banner>[].obs;
