@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/cupertino.dart' hide Banner;
 import 'package:flutter/foundation.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/state_manager.dart';
+import 'package:http/http.dart' as http;
 
 import '../../../core/services/api/api_client.dart';
 import '../../../core/services/api/api_retry_manager.dart';
@@ -110,6 +113,15 @@ class HomeController extends GetxController {
     required double lat,
     required double lng,
   }) async {
+    if (kIsWeb) {
+      try {
+        currentAddress.value = await reverseGeocodeWeb(lat, lng);
+      } catch (_) {
+        currentAddress.value = "Unknown Location";
+      }
+      return;
+    }
+
     try {
       final placemarks = await placemarkFromCoordinates(lat, lng);
       if (placemarks.isNotEmpty) {
@@ -119,6 +131,26 @@ class HomeController extends GetxController {
     } catch (_) {
       currentAddress.value = "Unknown Location";
     }
+  }
+
+  Future<String> reverseGeocodeWeb(double lat, double lng) async {
+    final url = Uri.parse(
+      "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=$lat&lon=$lng",
+    );
+
+    final response = await http.get(
+      url,
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Flutter App) stackfood-sample-task",
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data["display_name"] ?? "Unknown Location";
+    }
+
+    return "Unknown Location";
   }
 
   Future<void> fetchBanners() async {
@@ -239,7 +271,7 @@ class HomeController extends GetxController {
         int totalSize = data.totalSize ?? 0;
         if (restaurants.length >= totalSize) {
           hasMoreRestaurants(false);
-        }else {
+        } else {
           restaurantOffset++;
         }
       }
