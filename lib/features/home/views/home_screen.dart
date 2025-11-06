@@ -300,7 +300,7 @@ class _HomeScreenState extends State<HomeScreen>
                         SizedBox(height: 12.h),
                         Text(
                           categoriesModel.name ?? '',
-                          style: mulishBold.copyWith(fontSize: 13),
+                          style: mulishBold.copyWith(fontSize: 13.sp),
                         ),
                       ],
                     );
@@ -416,7 +416,7 @@ class _HomeScreenState extends State<HomeScreen>
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: mulishReg.copyWith(
-                                    fontSize: 13,
+                                    fontSize: 13.sp,
                                     color: AppColor.textSec,
                                   ),
                                 ),
@@ -425,19 +425,21 @@ class _HomeScreenState extends State<HomeScreen>
                                   children: [
                                     Text(
                                       "\$${food.price}",
-                                      style: mulishBold.copyWith(fontSize: 15),
+                                      style: mulishBold.copyWith(
+                                        fontSize: 15.sp,
+                                      ),
                                     ),
                                     const Spacer(),
                                     Icon(
                                       Icons.star_rounded,
                                       size: 16.r,
-                                      color: Colors.green,
+                                      color: AppColor.greenColor,
                                     ),
-                                    const SizedBox(width: 4),
+                                    SizedBox(width: 4.w),
                                     Text(
                                       (food.avgRating ?? 0).toStringAsFixed(1),
                                       style: mulishBold.copyWith(
-                                        color: Colors.green,
+                                        color: AppColor.greenColor,
                                       ),
                                     ),
                                   ],
@@ -527,7 +529,7 @@ class _HomeScreenState extends State<HomeScreen>
                         children: [
                           ImageLoader(
                             url: campaignsItemModel.imageFullUrl ?? "",
-                            size: 84,
+                            size: 84.r,
                             radius: 8.r,
                             boxFit: BoxFit.cover,
                           ),
@@ -542,15 +544,15 @@ class _HomeScreenState extends State<HomeScreen>
                                   campaignsItemModel.name ?? "",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: mulishBold.copyWith(fontSize: 15),
+                                  style: mulishBold.copyWith(fontSize: 15.sp),
                                 ),
                                 Text(
                                   campaignsItemModel.restaurantName ?? "",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: mulishReg.copyWith(
-                                    fontSize: 13,
-                                    color: Colors.grey,
+                                    fontSize: 13.sp,
+                                    color: AppColor.textSec,
                                   ),
                                 ),
 
@@ -558,7 +560,7 @@ class _HomeScreenState extends State<HomeScreen>
                                   rating: (campaignsItemModel.avgRating ?? 0)
                                       .toDouble(),
                                   itemCount: 5,
-                                  itemSize: 16,
+                                  itemSize: 16.r,
                                   unratedColor: Colors.grey.withValues(
                                     alpha: 0.3,
                                   ),
@@ -577,8 +579,8 @@ class _HomeScreenState extends State<HomeScreen>
                                               text:
                                                   "\$${campaignsItemModel.price}",
                                               style: mulishBold.copyWith(
-                                                fontSize: 15,
-                                                color: Colors.black,
+                                                fontSize: 15.sp,
+                                                color: AppColor.textColor,
                                               ),
                                             ),
 
@@ -592,8 +594,8 @@ class _HomeScreenState extends State<HomeScreen>
                                               style: mulishReg.copyWith(
                                                 decoration:
                                                     TextDecoration.lineThrough,
-                                                color: Colors.grey,
-                                                fontSize: 14,
+                                                color: AppColor.textSec,
+                                                fontSize: 14.sp,
                                               ),
                                             ),
                                           ],
@@ -602,7 +604,7 @@ class _HomeScreenState extends State<HomeScreen>
                                     ),
                                     Icon(
                                       Icons.add_rounded,
-                                      size: 18,
+                                      size: 18.r,
                                       color: Colors.black,
                                     ),
                                   ],
@@ -716,7 +718,7 @@ class _HomeScreenState extends State<HomeScreen>
                                 restaurant.name ?? '',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: mulishBold.copyWith(fontSize: 16),
+                                style: mulishBold.copyWith(fontSize: 16.sp),
                               ),
                               Text(
                                 restaurant.address ?? '',
@@ -724,13 +726,13 @@ class _HomeScreenState extends State<HomeScreen>
                                 overflow: TextOverflow.ellipsis,
                                 style: mulishReg.copyWith(
                                   color: AppColor.textSec,
-                                  fontSize: 13,
+                                  fontSize: 13.sp,
                                 ),
                               ),
                               RatingBarIndicator(
                                 rating: (restaurant.avgRating ?? 0).toDouble(),
                                 itemCount: 5,
-                                itemSize: 16,
+                                itemSize: 16.r,
                                 unratedColor: Colors.grey.withValues(
                                   alpha: 0.3,
                                 ),

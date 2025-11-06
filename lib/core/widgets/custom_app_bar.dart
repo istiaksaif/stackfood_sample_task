@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +8,7 @@ import '../../../core/extensions/color_brightness_extension.dart';
 import '../utils/app_color.dart';
 import '../utils/app_fonts.dart';
 import '../utils/app_image.dart';
+import '../utils/platform_utils.dart';
 import 'app_text_widget.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -57,7 +56,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isIOS = Platform.isIOS;
+    final bool isIOS = PlatformUtils.isIOS;
     final color = bgColor ?? AppColor.backgroundColor;
     final navigationBarColor = bottomBgColor ?? color;
     final brightness = color.isLight
@@ -130,5 +129,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      Size(1170, preferredHeight ?? (Platform.isIOS ? 36.h : 45.h));
+      Size(1170, preferredHeight ?? (PlatformUtils.isIOS ? 36.h : 45.h));
 }
