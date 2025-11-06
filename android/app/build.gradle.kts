@@ -4,6 +4,18 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+import java . util . Properties
+        import java . io . FileInputStream
+
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+} else {
+    keystoreProperties["storeFile"] = "."
+}
+
 android {
     namespace = "com.stackfood.task"
     compileSdk = flutter.compileSdkVersion
@@ -26,10 +38,33 @@ android {
         versionName = flutter.versionName
     }
 
-    buildTypes {
-        release {
-            signingConfig = signingConfigs.getByName("debug")
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties["keyAlias"] as String?
+            keyPassword = keystoreProperties["keyPassword"] as String?
+            storeFile = keystoreProperties["storeFile"]?.let { file(it as String) }
+            storePassword = keystoreProperties["storePassword"] as String?
         }
+    }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            isShrinkResources = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android.txt"),
+                file("proguard-rules.pro")
+            )
+            signingConfig =
+                if (keystorePropertiesFile.exists()) signingConfigs.getByName("release") else signingConfigs.getByName(
+                    "debug"
+                )
+        }
+    }
+
+    lint {
+        disable += "InvalidPackage"
+        checkReleaseBuilds = false
     }
 }
 
