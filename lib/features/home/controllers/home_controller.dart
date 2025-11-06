@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import '../../../core/services/api/api_client.dart';
 import '../../../core/services/api/api_retry_manager.dart';
 import '../../../core/utils/_constants.dart';
+import '../../../core/utils/session_manager.dart';
 import '../../shared/model/config_model.dart';
 import '../../shared/model/restaurant.dart';
 import '../models/banner_model.dart';
@@ -43,9 +44,6 @@ class HomeController extends GetxController {
   var restaurantOffset = 1;
   final int restaurantLimit = 10;
   var hasMoreRestaurants = true.obs;
-
-  RxString currencySymbol = "".obs;
-  RxString currencyDirection = "".obs;
 
   // Store final address
   RxString currentAddress = "Loading...".obs;
@@ -102,9 +100,11 @@ class HomeController extends GetxController {
 
     double defaultLat = double.tryParse(cfg.defaultLocation?.lat ?? "0") ?? 0.0;
     double defaultLng = double.tryParse(cfg.defaultLocation?.lng ?? "0") ?? 0.0;
-
-    currencySymbol.value = cfg.currencySymbol ?? "\$";
-    currencyDirection.value = cfg.currencySymbolDirection ?? "left";
+    SessionManager.setValue(kCurrencySymbol, cfg.currencySymbol ?? "\$");
+    SessionManager.setValue(
+      kCurrencyDirection,
+      cfg.currencySymbolDirection ?? "left",
+    );
 
     fetchAddressFromLatLng(lat: defaultLat, lng: defaultLng);
   }

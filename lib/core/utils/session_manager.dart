@@ -15,6 +15,8 @@ const kUserEmail = 'user_email';
 const kUserPassword = 'user_password';
 const kPremiumUntil = 'premium_until';
 const kOneSignalAppId = 'one_signal_app_id';
+const kCurrencySymbol = 'currency_symbol';
+const kCurrencyDirection = 'currency_direction';
 
 class SessionManager {
   static GetStorage _preferences = GetStorage();
