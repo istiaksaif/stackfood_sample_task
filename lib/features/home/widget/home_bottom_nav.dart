@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/app_color.dart';
-import '../../../core/utils/app_responsive.dart';
 import '../../../core/utils/app_image.dart';
+import '../../../core/utils/app_responsive.dart';
 import '../controllers/navigation_controller.dart';
 import 'custom_nav_item.dart';
 
@@ -31,9 +32,9 @@ class _HomeBottomNavState extends State<HomeBottomNav>
     super.build(context);
     final navHeight = AppResponsive.value<double>(
       context: context,
-      mobile: 56,
-      tablet: 62,
-      desktop: 68,
+      mobile: 70,
+      tablet: 70,
+      desktop: 70,
     );
     final horizontalPadding = AppResponsive.value<double>(
       context: context,
@@ -62,21 +63,14 @@ class _HomeBottomNavState extends State<HomeBottomNav>
 
     return Container(
       height: navHeight,
-      width: double.infinity,
+      width: 1.sw,
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding,
         vertical: verticalPadding,
       ),
       decoration: BoxDecoration(
         color: AppColor.whiteColor,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: .15),
-            blurRadius: 16,
-            offset: Offset(0, 4),
-            spreadRadius: 0,
-          ),
-        ],
+        border: Border(top: BorderSide(color: AppColor.borderColor, width: 1)),
       ),
       alignment: Alignment.bottomCenter,
       child: Obx(() {

@@ -3,8 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/instance_manager.dart';
 
 import '../../../core/utils/app_color.dart';
-import '../../../core/utils/app_responsive.dart';
 import '../../../core/utils/app_image.dart';
+import '../../../core/utils/app_responsive.dart';
+import '../../shared/view/dummy_screen.dart';
 import '../controllers/navigation_controller.dart';
 import '../widget/home_bottom_nav.dart';
 import 'home_screen.dart';
@@ -52,10 +53,10 @@ class _BottomNavBarState extends State<BottomNavBar>
             physics: NeverScrollableScrollPhysics(),
             children: [
               HomeScreen(),
-              SizedBox.shrink(),
-              SizedBox.shrink(),
-              SizedBox.shrink(),
-              SizedBox.shrink(),
+              DummyScreen(),
+              DummyScreen(),
+              DummyScreen(),
+              DummyScreen(),
             ],
           ),
         ],

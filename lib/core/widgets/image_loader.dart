@@ -9,6 +9,7 @@ class ImageLoader extends StatelessWidget {
   final double? width, height, radius, size, padding;
   final BoxFit? boxFit;
   final Color? bgColor;
+  final BorderRadiusGeometry? borderRadius;
 
   const ImageLoader({
     super.key,
@@ -19,13 +20,13 @@ class ImageLoader extends StatelessWidget {
     this.radius,
     this.bgColor,
     this.size,
-    this.padding,
+    this.padding, this.borderRadius,
   });
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(radius ?? 0),
+      borderRadius: borderRadius??BorderRadius.circular(radius ?? 0),
       child: Container(
         color: bgColor,
         padding: EdgeInsets.all(padding ?? 0),

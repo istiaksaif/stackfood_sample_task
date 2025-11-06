@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
-import '../../utils/session_manager.dart';
-import 'network_error_handler.dart';
+import 'package:http/http.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../../utils/session_manager.dart';
+import 'network_error_handler.dart';
 
 class ApiClient {
   final String appBaseUrl;
@@ -32,10 +34,14 @@ class ApiClient {
     if (forceUpdateToken != null) {
       accessToken = forceUpdateToken;
     }
+
     _mainHeaders = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $accessToken',
+      'zoneId': '[1]',
+      'latitude': '23.735129',
+      'longitude': '90.425614',
     };
   }
 
