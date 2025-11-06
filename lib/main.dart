@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            initialRoute: Routes.splash,
+            initialRoute: Routes.home,
             initialBinding: InitialBinding(),
             getPages: AppPages.pages,
           ),
