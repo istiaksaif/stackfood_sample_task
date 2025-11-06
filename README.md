@@ -42,11 +42,12 @@ A Flutter application built for the **6amTech StackFood Sample Task**, implement
 
 ---
 
-## 🎥 Demo Video
+## 🎥 Demo Preview (GIF)
 
-Click to watch:
+Click to watch full video:
 
-[![Demo Video](https://github.com/istiaksaif/stackfood_sample_task/blob/main/assets/screenshots/ss1.jpg?raw=true)](https://github.com/istiaksaif/stackfood_sample_task/blob/main/assets/video/demo.mp4?raw=true)
+[![Demo GIF](https://raw.githubusercontent.com/istiaksaif/stackfood_sample_task/main/assets/video/demo.gif)](https://raw.githubusercontent.com/istiaksaif/stackfood_sample_task/main/assets/video/demo.mp4?raw=true)
+
 
 ---
 
